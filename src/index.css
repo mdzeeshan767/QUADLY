@@ -1,0 +1,57 @@
+
+@font-face {
+  font-family: 'Riesling';
+  src: url('/fonts/riesling.ttf') format('truetype');
+  font-weight: heavy;
+  font-style: heavy;
+  font-display: swap;
+}
+:root {
+  --bg: #0b0b0b;
+  --surface: #151515;
+  --surface-hover: #202020;
+  --text: #f5f3ef;
+  --muted: #99949c;
+  --gold: #c6a45c;
+  --gold-hover: #d5b875;
+  --border: #303030;
+
+  --font-heading: Arial, Helvetica, sans-serif;
+  --font-body: Arial, Helvetica, sans-serif;
+
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
