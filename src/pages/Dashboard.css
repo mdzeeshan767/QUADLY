@@ -1,0 +1,250 @@
+/* Quadly dashboard: solid black and gold.
+   All class names start with qd- so nothing clashes with App.css or index.css. */
+
+@font-face {
+  font-family: 'Riesling';
+  src: url('/fonts/riesling.ttf') format('truetype');
+  font-display: swap;
+}
+
+.qd-page {
+  --qd-black: #0a0a0a;
+  --qd-gold: #d4af37;
+  --qd-gold-light: #f6e3a1;
+  --qd-gold-dark: #a67c00;
+  --qd-text: #f4ecd6;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: var(--qd-black);
+  color: var(--qd-text);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  padding: 32px 24px 56px;
+}
+
+.qd-page *,
+.qd-page *::before,
+.qd-page *::after {
+  box-sizing: border-box;
+}
+
+.qd-page a {
+  text-decoration: none;
+}
+
+.qd-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Header */
+.qd-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+}
+
+.qd-logo {
+  font-family: 'Riesling', Georgia, serif;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: var(--qd-gold);
+  background: linear-gradient(135deg, var(--qd-gold-light) 0%, var(--qd-gold) 50%, var(--qd-gold-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.qd-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.qd-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 24px;
+  border: 1.5px solid var(--qd-gold);
+  border-radius: 999px;
+  color: var(--qd-gold);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.qd-pill:hover,
+.qd-pill:focus-visible {
+  background: var(--qd-gold);
+  color: var(--qd-black);
+}
+
+/* Greeting */
+.qd-hello {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qd-eyebrow {
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #b8963a;
+}
+
+.qd-title {
+  margin: 0;
+  font-family: 'Riesling', Georgia, serif;
+  font-weight: 500;
+  font-size: 52px;
+  line-height: 1.1;
+  color: var(--qd-gold-light);
+}
+
+/* Map */
+.qd-map-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.qd-map {
+  position: relative;
+  height: 340px;
+  border-radius: 28px;
+  border: 1.5px solid var(--qd-gold);
+  overflow: hidden;
+  background: #111008;
+  box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.06);
+}
+
+.qd-map-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.qd-map-chip {
+  position: absolute;
+  left: 28px;
+  top: 24px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: var(--qd-gold);
+  color: var(--qd-black);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.qd-ai-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qd-ai {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 26px 10px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--qd-gold-light), var(--qd-gold) 55%, var(--qd-gold-dark));
+  color: var(--qd-black);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.qd-ai:hover,
+.qd-ai:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.35);
+}
+
+/* Cards */
+.qd-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.qd-card {
+  flex: 1 1 260px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 28px;
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  border-radius: 24px;
+  background: linear-gradient(160deg, #17140a 0%, #0d0d0d 70%);
+  color: var(--qd-text);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.qd-card:hover,
+.qd-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--qd-gold);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.18);
+}
+
+.qd-card-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1.5px solid var(--qd-gold);
+  color: var(--qd-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qd-card-title {
+  font-family: 'Riesling', Georgia, serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--qd-gold-light);
+}
+
+.qd-card-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: var(--qd-gold);
+}
+
+/* Phones */
+@media (max-width: 560px) {
+  .qd-page {
+    padding: 24px 16px 40px;
+  }
+  .qd-logo {
+    font-size: 40px;
+  }
+  .qd-title {
+    font-size: 40px;
+  }
+  .qd-map {
+    height: 240px;
+  }
+}
