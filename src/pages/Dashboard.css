@@ -1,250 +1,1102 @@
-/* Quadly dashboard: solid black and gold.
-   All class names start with qd- so nothing clashes with App.css or index.css. */
-
 @font-face {
   font-family: 'Riesling';
   src: url('/fonts/riesling.ttf') format('truetype');
   font-display: swap;
 }
-
+ 
 .qd-page {
   --qd-black: #0a0a0a;
   --qd-gold: #d4af37;
   --qd-gold-light: #f6e3a1;
   --qd-gold-dark: #a67c00;
   --qd-text: #f4ecd6;
-
+  --qd-white: #ffffff;
+  --qd-muted: #a9a08a;
+ 
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+ 
   min-height: 100vh;
   box-sizing: border-box;
+ 
   background: var(--qd-black);
   color: var(--qd-text);
+ 
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+ 
   padding: 32px 24px 56px;
 }
-
+ 
 .qd-page *,
 .qd-page *::before,
 .qd-page *::after {
   box-sizing: border-box;
 }
-
+ 
 .qd-page a {
   text-decoration: none;
 }
+ 
+/* =====================================================
+   GOLDEN CURVED BACKGROUND LINES
+===================================================== */
+ 
 
+.qd-page::before,
+.qd-page::after {
+  content: "";
+  position: absolute;
+  left: -15%;
+  width: 130%;
+  height: 260px;
+
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 50%;
+
+  pointer-events: none;
+  z-index: 0;
+
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.7));
+}
+
+.qd-page::before {
+  top: 15%;
+  transform: rotate(-8deg);
+}
+
+.qd-page::after {
+  top: 18%;
+  transform: rotate(-8deg);
+  opacity: 0.45;
+}
+
+ 
+.qd-page::before {
+  top: 0;
+  border-top: 2px solid rgba(212, 175, 55, 0.9);
+  transform: rotate(-4deg);
+}
+ 
+.qd-page::after {
+  bottom: 0;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.9);
+  transform: rotate(4deg);
+}
+ 
+/* DASHBOARD CONTENT */
+ 
 .qd-wrap {
+  position: relative;
+  z-index: 1;
+ 
   max-width: 1200px;
   margin: 0 auto;
+ 
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
-
-/* Header */
+ 
+/* =====================================================
+   HEADER
+===================================================== */
+ 
 .qd-header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid rgba(212, 175, 55, 0.28);
+  gap: 10px;
+ 
+  padding-bottom: 0;
+ 
+  border-bottom: 1px solid rgba(125, 109, 55, 0.28);
 }
-
+ 
 .qd-logo {
   font-family: 'Riesling', Georgia, serif;
-  font-size: 48px;
-  line-height: 1;
+  font-size: 94px;
+  line-height: 0.9;
   letter-spacing: 1px;
-  color: var(--qd-gold);
-  background: linear-gradient(135deg, var(--qd-gold-light) 0%, var(--qd-gold) 50%, var(--qd-gold-dark) 100%);
+ 
+  background: linear-gradient(
+    135deg,
+    var(--qd-gold-light) 0%,
+    var(--qd-gold) 50%,
+    var(--qd-gold-dark) 100%
+  );
+ 
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
+ 
 .qd-nav {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
-
+ 
+/* ---------- NATURAL GOLDEN NAV BUTTON GLOW ---------- */
+ 
 .qd-pill {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+ 
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+ 
   min-height: 44px;
   padding: 11px 24px;
-  border: 1.5px solid var(--qd-gold);
+ 
+  border: 1.5px solid rgba(255, 232, 170, 0.9);
   border-radius: 999px;
-  color: var(--qd-gold);
+ 
+  background: #090909;
+  color: #fff4d0;
+ 
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.4px;
-  transition: background 0.2s, color 0.2s;
+ 
+  cursor: pointer;
+ 
+  /* Always-visible natural glow */
+  box-shadow:
+    0 0 5px rgba(255, 255, 255, 0.65),
+    0 0 10px rgba(255, 235, 180, 0.55),
+    0 0 20px rgba(212, 175, 55, 0.35),
+    inset 0 0 8px rgba(255, 255, 255, 0.12);
+ 
+  transition: all 0.4s ease;
+}
+ 
+/* Soft moving shine */
+.qd-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+ 
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.12) 40%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.12) 60%,
+    transparent 80%
+  );
+ 
+  transform: translateX(-150%);
+  transition: transform 0.8s ease;
 }
 
+/* =====================================================
+   QUADLY — DASHBOARD GREETING GOLDEN SHINE
+===================================================== */
+
+.qd-title {
+  background: linear-gradient(
+    110deg,
+    #d4af37 0%,
+    #f6e3a1 25%,
+    #ffffff 45%,
+    #fff0ad 50%,
+    #d4af37 65%,
+    #f6e3a1 100%
+  );
+
+  background-size: 250% auto;
+  background-position: 100% center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    drop-shadow(0 0 5px rgba(205, 200, 185, 0.25));
+
+  animation: quadly-greeting-shine 4s ease-in-out infinite;
+
+  transition: filter 0.4s ease;
+}
+
+.qd-title:hover {
+  filter:
+    drop-shadow(0 0 7px rgba(173, 170, 161, 0.8))
+    drop-shadow(0 0 18px rgba(212, 175, 55, 0.55));
+}
+
+@keyframes quadly-greeting-shine {
+  0%, 60% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: -100% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qd-title {
+    animation: none;
+  }
+}
+
+ 
+/* Stronger glow on hover */
 .qd-pill:hover,
 .qd-pill:focus-visible {
-  background: var(--qd-gold);
-  color: var(--qd-black);
+  transform: scale(1.12) translateY(-2px);
+ 
+  color: #fff3bd;
+  background: transparent;
+  border-color: #fff0a3;
+ 
+  box-shadow:
+    0 0 5px #fff0a3,
+    0 0 12px rgba(255, 220, 110, 0.9),
+    0 0 22px rgba(255, 200, 50, 0.75),
+    0 0 40px rgba(255, 190, 30, 0.4),
+    inset 0 0 10px rgba(255, 220, 120, 0.25);
+ 
+  text-shadow:
+    0 0 6px #ffe9a0,
+    0 0 15px rgba(255, 210, 80, 0.9);
 }
-
-/* Greeting */
+ 
+.qd-pill:hover::before,
+.qd-pill:focus-visible::before {
+  transform: translateX(150%);
+}
+ 
+.qd-pill:active {
+  transform: scale(1.05);
+}
+ 
+.qd-pill:focus-visible {
+  outline: 1px solid var(--qd-gold-light);
+  outline-offset: 4px;
+}
+ 
+/* =====================================================
+   WELCOME SECTION
+===================================================== */
+ 
 .qd-hello {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  text-align: center;
 }
-
+ 
 .qd-eyebrow {
-  font-size: 13px;
-  letter-spacing: 3px;
+  font-size: 13.8px;
+  letter-spacing: 19px;
   text-transform: uppercase;
   color: #b8963a;
+ 
+  /* keeps the spaced text centred (last letter adds trailing space) */
+  padding-left: 19px;
 }
-
+ 
+/* line-height was 0.3, which pulled the title up into the eyebrow */
 .qd-title {
   margin: 0;
+ 
   font-family: 'Riesling', Georgia, serif;
   font-weight: 500;
-  font-size: 52px;
+  font-size: 92px;
   line-height: 1.1;
+ 
   color: var(--qd-gold-light);
 }
-
-/* Map */
+ 
+/* =====================================================
+   CAMPUS MAP CONTAINER
+===================================================== */
+ 
 .qd-map-section {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
-
-.qd-map {
-  position: relative;
-  height: 340px;
-  border-radius: 28px;
-  border: 1.5px solid var(--qd-gold);
-  overflow: hidden;
-  background: #111008;
-  box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.06);
-}
-
-.qd-map-art {
+ 
+/* ---------- MAP MIRROR SHINE (same effect as the nav pills) ---------- */
+ 
+.qd-map::before {
+  content: "";
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  z-index: 9;
+ 
+  border-radius: inherit;
+  pointer-events: none;
+ 
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0.32) 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    transparent 80%
+  );
+ 
+  transform: translateX(-150%);
+  transition: transform 0.8s ease;
 }
-
+ 
+.qd-map:hover::before {
+  transform: translateX(150%);
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .qd-map::before {
+    transition: none;
+  }
+}
+ 
+.qd-map {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+ 
+  height: 460px;
+  width: 100%;
+ 
+  border-radius: 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+ 
+  background:
+    radial-gradient(
+      ellipse at 15% 50%,
+      rgba(212, 175, 55, 0.13),
+      transparent 45%
+    ),
+    linear-gradient(120deg, #28251a, #11110f 75%);
+ 
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.12),
+    0 0 12px rgba(255, 255, 255, 0.35),
+    0 0 25px rgba(255, 255, 255, 0.18),
+    inset 0 0 15px rgba(255, 255, 255, 0.12);
+ 
+  transition: all 0.3s ease;
+ 
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+ 
+.qd-map:hover {
+  border-color: var(--qd-gold);
+ 
+  box-shadow:
+    0 0 0 3px rgba(255, 255, 255, 0.15),
+    0 0 18px rgba(255, 255, 255, 0.5),
+    0 0 35px rgba(255, 255, 255, 0.25),
+    inset 0 0 18px rgba(255, 255, 255, 0.15);
+}
+ 
+/* CURSOR-FOLLOWING TORCH LIGHT */
+ 
+.qd-map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+ 
+  border-radius: inherit;
+  pointer-events: none;
+ 
+  background: radial-gradient(
+    circle 125px at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 238, 180, 0.25) 30%,
+    rgba(212, 175, 55, 0.10) 55%,
+    transparent 100%
+  );
+ 
+  opacity: 0;
+  transition: opacity 0.25s ease;
+ 
+  z-index: 5;
+}
+ 
+.qd-map:hover::after {
+  opacity: 1;
+}
+ 
+/* CAMPUS WORLD CHIP (plain bold font so it stays readable) */
+ 
 .qd-map-chip {
   position: absolute;
-  left: 28px;
-  top: 24px;
+  left: 18px;
+  top: 14px;
+ 
+  z-index: 12;
+ 
   padding: 8px 20px;
+ 
+  border: 2px solid rgb(214, 214, 201);
   border-radius: 999px;
+ 
   background: var(--qd-gold);
-  color: var(--qd-black);
-  font-size: 14px;
-  font-weight: 600;
+  color: #111;
+ 
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
 }
-
+ 
+/* =====================================================
+   SINGLE CONNECTED CAMPUS MAP
+===================================================== */
+ 
+.qd-campus-layout {
+  position: absolute;
+  inset: 0;
+ 
+  z-index: 7;
+ 
+  display: grid;
+ 
+  grid-template-columns: 130px minmax(0, 1fr) 150px;
+ 
+  align-items: center;
+  gap: 18px;
+ 
+  padding: 64px 24px 22px;
+}
+ 
+/* LEFT AND RIGHT SIDES */
+ 
+.qd-campus-side {
+  display: flex;
+  flex-direction: column;
+ 
+  align-items: center;
+  justify-content: center;
+ 
+  gap: 28px;
+  min-width: 0;
+}
+ 
+.qd-campus-left {
+  grid-column: 1;
+}
+ 
+.qd-campus-right {
+  grid-column: 3;
+}
+ 
+/* CENTRAL ROAD AREA */
+ 
+.qd-campus-roads {
+  position: relative;
+  grid-column: 2;
+ 
+  height: 100%;
+  min-width: 0;
+ 
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+}
+ 
+/* ONE CONTINUOUS ROAD */
+ 
+.qd-campus-roads::before {
+  content: "";
+ 
+  position: absolute;
+  left: -35px;
+  right: -35px;
+  top: 50%;
+ 
+  height: 22px;
+ 
+  transform: translateY(-50%);
+ 
+  background: linear-gradient(
+    180deg,
+    rgba(212, 175, 55, 0.12),
+    rgba(24, 24, 21, 0.96) 20%,
+    rgba(24, 24, 21, 0.96) 80%,
+    rgba(212, 175, 55, 0.12)
+  );
+ 
+  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+ 
+  z-index: 0;
+}
+ 
+/* ROAD CENTER DASHED LINE */
+ 
+.qd-campus-roads::after {
+  content: "";
+ 
+  position: absolute;
+  left: -25px;
+  right: -25px;
+  top: 50%;
+ 
+  border-top: 2px dashed rgba(246, 227, 161, 0.58);
+ 
+  transform: translateY(-50%);
+ 
+  z-index: 1;
+  pointer-events: none;
+}
+ 
+/* UPPER AND LOWER BUILDING ROWS */
+ 
+.qd-campus-road {
+  position: relative;
+ 
+  min-width: 0;
+  height: 100%;
+ 
+  display: flex;
+  justify-content: center;
+ 
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+ 
+  padding: 0;
+}
+ 
+.qd-campus-upper {
+  align-items: flex-end;
+  padding-bottom: 24px;
+}
+ 
+.qd-campus-lower {
+  align-items: flex-start;
+  padding-top: 24px;
+}
+ 
+/* BUILDING ROW */
+ 
+.qd-road-spots {
+  position: relative;
+  z-index: 3;
+ 
+  width: 100%;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+ 
+  gap: 14px;
+}
+ 
+/* =====================================================
+   BUILDINGS
+===================================================== */
+ 
+.qd-bld {
+  appearance: none;
+  position: relative;
+  z-index: 3;
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+  gap: 5px;
+ 
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 156px;
+  min-height: 96px;
+ 
+  padding: 12px 8px;
+ 
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 14px;
+ 
+  background: linear-gradient(160deg, #1d1910, #0e0e0c);
+  color: var(--qd-text);
+ 
+  font: inherit;
+  text-align: center;
+ 
+  cursor: pointer;
+  outline: none;
+ 
+  box-shadow:
+    inset 0 1px 0 rgba(246, 227, 161, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.5);
+ 
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+ 
+.qd-bld-icon {
+  display: inline-flex;
+  color: var(--qd-gold);
+  transition: color 0.25s ease;
+}
+ 
+.qd-bld-name {
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.2;
+  color: #fff;
+}
+ 
+.qd-bld-sub {
+  font-size: 10.5px;
+  line-height: 1.25;
+  color: var(--qd-muted);
+}
+ 
+/* Playground: open ground, dashed outline instead of a solid block */
+ 
+.qd-bld--open {
+  border-style: dashed;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(212, 175, 55, 0.1),
+    rgba(14, 14, 12, 0.6) 75%
+  );
+}
+ 
+/* Main Entrance: arch-shaped gate */
+ 
+.qd-bld--gate {
+  min-height: 84px;
+  border-radius: 40px 40px 14px 14px;
+}
+ 
+/* Hostel and the right column use the full column width */
+ 
+.qd-campus-side .qd-bld {
+  width: 100%;
+  max-width: none;
+  flex: none;
+}
+ 
+.qd-campus-left .qd-bld {
+  min-height: 120px;
+}
+ 
+/* HOVER AND KEYBOARD FOCUS */
+ 
+.qd-bld:hover,
+.qd-bld:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--qd-gold-light);
+ 
+  box-shadow:
+    inset 0 1px 0 rgba(246, 227, 161, 0.18),
+    0 0 14px rgba(212, 175, 55, 0.35),
+    0 10px 24px rgba(0, 0, 0, 0.55);
+}
+ 
+.qd-bld:focus-visible {
+  outline: 1px solid var(--qd-gold-light);
+  outline-offset: 3px;
+}
+ 
+/* SELECTED BUILDING */
+ 
+.qd-bld.is-selected {
+  border-color: #fff1b0;
+ 
+  background: linear-gradient(145deg, #fff0ad, #d4af37 60%, #b48a1c);
+ 
+  box-shadow:
+    0 0 10px rgba(255, 240, 163, 0.8),
+    0 0 26px rgba(255, 215, 100, 0.5),
+    0 10px 24px rgba(0, 0, 0, 0.5);
+}
+ 
+.qd-bld.is-selected .qd-bld-icon,
+.qd-bld.is-selected .qd-bld-name {
+  color: #111;
+}
+ 
+.qd-bld.is-selected .qd-bld-sub {
+  color: rgba(17, 17, 17, 0.72);
+}
+ 
+/* =====================================================
+   SELECTED BUILDING DETAILS + AI ASSISTANT
+===================================================== */
+ 
 .qd-ai-row {
   display: flex;
-  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
-
+ 
+.qd-spot-detail {
+  flex: 1 1 320px;
+  min-width: 0;
+  min-height: 64px;
+ 
+  display: flex;
+  align-items: center;
+  gap: 14px;
+ 
+  padding: 10px 20px;
+ 
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 20px;
+ 
+  background: rgba(22, 19, 11, 0.7);
+ 
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+ 
+.qd-spot-detail.is-open {
+  border-color: var(--qd-gold);
+  background: rgba(30, 25, 13, 0.85);
+}
+ 
+.qd-detail-icon {
+  flex: none;
+ 
+  width: 44px;
+  height: 44px;
+ 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+ 
+  border: 1.5px solid var(--qd-gold);
+  border-radius: 50%;
+ 
+  color: var(--qd-gold);
+}
+ 
+.qd-detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+ 
+.qd-detail-text strong {
+  font-size: 16px;
+  color: var(--qd-gold-light);
+}
+ 
+.qd-detail-text span {
+  font-size: 13px;
+  color: #fff;
+}
+ 
+.qd-detail-text small {
+  font-size: 12px;
+  color: var(--qd-muted);
+}
+ 
+.qd-detail-hint {
+  font-size: 14px;
+  color: var(--qd-muted);
+}
+ 
+/* AI ASSISTANT BUTTON */
+ 
 .qd-ai {
   display: inline-flex;
   align-items: center;
+ 
   gap: 10px;
+ 
   min-height: 44px;
   padding: 10px 26px 10px 20px;
-  border: 0;
+ 
+  border: 3px solid rgb(214, 214, 201);
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--qd-gold-light), var(--qd-gold) 55%, var(--qd-gold-dark));
+ 
+  background: linear-gradient(
+    135deg,
+    var(--qd-gold-light),
+    var(--qd-gold) 55%,
+    var(--qd-gold-dark)
+  );
+ 
   color: var(--qd-black);
+ 
   font-family: inherit;
   font-size: 15px;
   font-weight: 600;
+ 
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+ 
+  transition: transform 0.9s, box-shadow 0.6s;
 }
-
+ 
 .qd-ai:hover,
 .qd-ai:focus-visible {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(212, 175, 55, 0.35);
 }
-
-/* Cards */
+ 
+/* =====================================================
+   QUICK ACCESS CARDS
+===================================================== */
+ 
 .qd-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
 }
-
+ 
 .qd-card {
   flex: 1 1 260px;
   min-width: 0;
+ 
   display: flex;
   flex-direction: column;
   gap: 22px;
+ 
   padding: 28px;
+ 
   border: 1.5px solid rgba(212, 175, 55, 0.5);
   border-radius: 24px;
-  background: linear-gradient(160deg, #17140a 0%, #0d0d0d 70%);
+ 
+  background: linear-gradient(
+    160deg,
+    #17140a 0%,
+    #0d0d0d 70%
+  );
+ 
   color: var(--qd-text);
-  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+ 
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
-
+ 
 .qd-card:hover,
 .qd-card:focus-visible {
   transform: translateY(-4px);
+ 
   border-color: var(--qd-gold);
+ 
   box-shadow: 0 12px 40px rgba(212, 175, 55, 0.18);
 }
-
+ 
 .qd-card-icon {
   width: 56px;
   height: 56px;
+ 
   border-radius: 50%;
   border: 1.5px solid var(--qd-gold);
+ 
   color: var(--qd-gold);
+ 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-
+ 
 .qd-card-title {
   font-family: 'Riesling', Georgia, serif;
   font-size: 28px;
   font-weight: 500;
   color: var(--qd-gold-light);
 }
-
+ 
 .qd-card-open {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+ 
   font-size: 14px;
   letter-spacing: 0.5px;
   color: var(--qd-gold);
 }
-
-/* Phones */
+ 
+/* =====================================================
+   TABLET
+===================================================== */
+ 
+@media (max-width: 850px) {
+  .qd-title {
+    font-size: 64px;
+  }
+ 
+  .qd-eyebrow {
+    letter-spacing: 10px;
+    padding-left: 10px;
+  }
+ 
+  .qd-campus-layout {
+    grid-template-columns: 96px minmax(0, 1fr) 110px;
+    gap: 10px;
+ 
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+ 
+  .qd-road-spots {
+    gap: 8px;
+  }
+ 
+  .qd-bld {
+    min-height: 88px;
+    padding: 10px 4px;
+  }
+ 
+  .qd-bld-name {
+    font-size: 11.5px;
+  }
+ 
+  .qd-bld-sub {
+    font-size: 9.5px;
+  }
+ 
+  .qd-campus-roads::before {
+    left: -18px;
+    right: -18px;
+  }
+}
+ 
+/* =====================================================
+   MOBILE
+===================================================== */
+ 
 @media (max-width: 560px) {
   .qd-page {
     padding: 24px 16px 40px;
   }
+ 
+  .qd-wrap {
+    gap: 28px;
+  }
+ 
   .qd-logo {
     font-size: 40px;
   }
+ 
   .qd-title {
     font-size: 40px;
+    line-height: 1.1;
   }
+ 
+  .qd-eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    padding-left: 5px;
+  }
+ 
+  .qd-header {
+    justify-content: center;
+  }
+ 
+  .qd-nav {
+    justify-content: center;
+    gap: 6px;
+  }
+ 
+  .qd-pill {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-height: 36px;
+  }
+ 
   .qd-map {
-    height: 240px;
+    height: 440px;
+    border-radius: 20px;
+  }
+ 
+  .qd-map-chip {
+    left: 10px;
+    top: 10px;
+    padding: 6px 12px;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+ 
+  .qd-campus-layout {
+    grid-template-columns: 62px minmax(0, 1fr) 70px;
+    gap: 4px;
+ 
+    padding: 58px 6px 12px;
+  }
+ 
+  .qd-campus-side {
+    gap: 18px;
+  }
+ 
+  .qd-road-spots {
+    gap: 4px;
+  }
+ 
+  .qd-bld {
+    min-height: 66px;
+    padding: 6px 2px;
+    gap: 3px;
+    border-radius: 10px;
+  }
+ 
+  .qd-bld--gate {
+    min-height: 60px;
+    border-radius: 24px 24px 10px 10px;
+  }
+ 
+  .qd-campus-left .qd-bld {
+    min-height: 84px;
+  }
+ 
+  .qd-bld-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+ 
+  .qd-bld-name {
+    font-size: 8.5px;
+    line-height: 1.15;
+  }
+ 
+  .qd-bld-sub {
+    display: none;
+  }
+ 
+  .qd-campus-roads::before {
+    left: -10px;
+    right: -10px;
+    height: 16px;
+  }
+ 
+  .qd-campus-roads::after {
+    left: -6px;
+    right: -6px;
+  }
+ 
+  .qd-spot-detail {
+    flex-basis: 100%;
+  }
+ 
+  .qd-ai {
+    margin-left: auto;
+  }
+ 
+  .qd-cards {
+    gap: 14px;
+  }
+ 
+  .qd-card {
+    flex-basis: 100%;
   }
 }
+ 

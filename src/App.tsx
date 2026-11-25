@@ -1,8 +1,22 @@
 
-import { Routes, Route, Link } from 'react-router-dom'
+import Timetable from './pages/Timetable'
+import Assignments from './pages/Assignments'
+import Notices from './pages/Notices'
+import ScrollToTop from './components/ScrollToTop'
+
+import {
+  
+  Routes,
+  Route,
+  Link,
+  Navigate
+} from 'react-router-dom'
+
 import './App.css'
+
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
 
 function Home() {
   return (
@@ -54,11 +68,20 @@ function Home() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/login" element={<Login />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/timetable" element={<Timetable />} />
+        <Route path="/assignments" element={<Assignments />} />
+        <Route path="/notices" element={<Notices />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   )
 }
 

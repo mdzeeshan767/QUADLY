@@ -55,7 +55,7 @@ function Register() {
     }
 
     if (data.session) {
-      navigate('/')
+      navigate('/dashboard')
     } else {
       setMessage(
         'Account created! Please check your email to verify your account.'

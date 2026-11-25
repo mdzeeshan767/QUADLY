@@ -218,6 +218,202 @@
   line-height: 1.8;
 }
 
+/* =====================================================
+   QUADLY — LANDING PAGE GOLDEN GLOW & MIRROR SHINE
+   Only affects the landing page logo and hero buttons
+===================================================== */
+
+/* ---------- QUADLY LOGO GLOW ---------- */
+
+.topbar .brand-home {
+  background: linear-gradient(
+    110deg,
+    #ffffff 5%,
+    #e8d7a7 25%,
+    #ffffff 42%,
+    #d4af37 50%,
+    #ffffff 60%,
+    #ffffff 100%
+  );
+
+  background-size: 250% auto;
+  background-position: 100% center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+
+  animation: quadly-logo-shine 6s ease-in-out infinite;
+
+  transition: filter 0.4s ease;
+}
+
+.topbar .brand-home:hover {
+  filter:
+    drop-shadow(0 0 5px rgba(255, 230, 160, 0.8))
+    drop-shadow(0 0 15px rgba(212, 175, 55, 0.7));
+}
+
+@keyframes quadly-logo-shine {
+  0%, 65% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: -100% center;
+  }
+}
+
+
+/* =====================================================
+   BUTTON BASE — MIRROR REFLECTION
+===================================================== */
+
+.hero-actions .button-primary,
+.hero-actions .button-secondary {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+
+}
+
+/* Moving mirror reflection */
+
+.hero-actions .button-primary::after,
+.hero-actions .button-secondary::after {
+  content: "";
+
+  position: absolute;
+  top: -50%;
+  left: -120%;
+
+  width: 65%;
+  height: 200%;
+
+  transform: skewX(-25deg);
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 25%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 245, 210, 0.25) 75%,
+    transparent 100%
+  );
+
+  pointer-events: none;
+  z-index: 1;
+
+  opacity: 0;
+}
+
+/* Reflection sweeps across in exactly 1 second */
+
+.hero-actions .button-primary:hover::after,
+.hero-actions .button-secondary:hover::after {
+  opacity: 1;
+  animation: quadly-mirror-shine 1s ease-in-out forwards;
+}
+
+@keyframes quadly-mirror-shine {
+  0% {
+    left: -120%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 160%;
+    opacity: 0;
+  }
+}
+
+
+/* =====================================================
+   GET STARTED — PERMANENT GOLDEN GLOW
+===================================================== */
+
+.hero-actions .button-primary {
+  border: 1px solid #e6c36b;
+
+  box-shadow:
+    0 0 5px rgba(255, 225, 150, 0.5),
+    0 0 12px rgba(212, 175, 55, 0.55),
+    0 0 25px rgba(212, 175, 55, 0.25),
+    inset 0 0 8px rgba(255, 255, 255, 0.12);
+}
+
+/* Stronger golden illumination on hover */
+
+.hero-actions .button-primary:hover {
+  transform: translateY(-3px) scale(1.04);
+
+  border-color: #fff0b0;
+
+  box-shadow:
+    0 0 8px rgba(255, 240, 180, 0.9),
+    0 0 18px rgba(255, 215, 100, 0.85),
+    0 0 35px rgba(212, 175, 55, 0.65),
+    0 0 55px rgba(212, 175, 55, 0.3),
+    inset 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+
+/* =====================================================
+   SIGN IN — SUBTLE GOLDEN GLOW
+===================================================== */
+
+.hero-actions .button-secondary {
+  border: 1px solid rgba(212, 175, 55, 0.55);
+
+  box-shadow:
+    0 0 5px rgba(212, 175, 55, 0.2),
+    0 0 12px rgba(212, 175, 55, 0.12);
+}
+
+/* Golden illumination on hover */
+
+.hero-actions .button-secondary:hover {
+  transform: translateY(-3px) scale(1.04);
+
+  color: #ffe8a3;
+  border-color: #f6e3a1;
+
+  box-shadow:
+    0 0 7px rgba(255, 230, 160, 0.65),
+    0 0 18px rgba(212, 175, 55, 0.55),
+    0 0 35px rgba(212, 175, 55, 0.3);
+}
+
+
+/* ---------- ACCESSIBILITY ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar .brand-home {
+    animation: none;
+  }
+
+  .hero-actions .button-primary::after,
+  .hero-actions .button-secondary::after {
+    animation: none !important;
+    transition: none;
+  }
+}
+
 
 /* =====================================================
    AUTHENTICATION PAGES

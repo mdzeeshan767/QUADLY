@@ -1,0 +1,690 @@
+
+@font-face {
+  font-family: 'Riesling';
+  src: url('/fonts/riesling.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* =========================================
+   QUADLY TIMETABLE PAGE
+========================================= */
+
+.qd-timetable-page {
+  --tt-gold: #d4af37;
+  --tt-light: #f6e3a1;
+  --tt-dark: #a67c00;
+  --tt-text: #f4ecd6;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height: 100vh;
+  padding: 32px 24px 45px;
+
+  background: #0a0a0a;
+  color: var(--tt-text);
+
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.qd-timetable-page *,
+.qd-timetable-page *::before,
+.qd-timetable-page *::after {
+  box-sizing: border-box;
+}
+
+/* GOLDEN CURVED LINES */
+
+.qd-timetable-page::before,
+.qd-timetable-page::after {
+  content: "";
+  position: absolute;
+
+  left: 9%;
+  width: 345%;
+  height: 1000px;
+
+  border-radius: 70%;
+  pointer-events: none;
+  z-index: -1;
+
+
+  filter: drop-shadow(0 0 8px rgba(212,175,55,.55));
+}
+
+.qd-timetable-page::before {
+  top: -120px;
+  border-top: 2px solid rgba(212,175,55,.8);
+  transform: rotate(-5deg);
+}
+
+.qd-timetable-page::after {
+  bottom: -130px;
+  border-bottom: 2px solid rgba(212,175,55,.85);
+  transform: rotate(4deg);
+}
+
+/* MAIN WRAPPER */
+
+.qd-timetable-wrap {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 38px;
+}
+
+/* =========================================
+   HEADER AND LOGO
+========================================= */
+
+.qd-timetable-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 14px;
+
+  border-bottom: 1px solid rgba(212,175,55,.22);
+}
+
+.qd-timetable-logo {
+  display: inline-block;
+
+  font-family: 'Riesling', Georgia, serif;
+  font-size: 76px;
+  line-height: 0.9;
+  letter-spacing: 1px;
+
+  text-decoration: none !important;
+  border-bottom: none !important;
+
+  background: linear-gradient(
+    135deg,
+    #fff1b0,
+    #d4af37 55%,
+    #a67c00
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  filter: drop-shadow(0 0 8px rgba(212,175,55,.25));
+}
+
+.qd-timetable-logo:hover,
+.qd-timetable-logo:focus,
+.qd-timetable-logo:visited {
+  text-decoration: none !important;
+}
+
+.qd-back-link {
+  color: #d4af37;
+  font-size: 13px;
+  transition: .3s ease;
+}
+
+.qd-back-link:hover {
+  color: #fff1b0;
+  text-shadow: 0 0 12px #d4af37;
+}
+
+/* =========================================
+   CENTERED TIMETABLE HEADING
+========================================= */
+
+.qd-timetable-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 10px;
+  text-align: center;
+}
+
+.qd-timetable-subtitle {
+  color: #b8963a;
+  font-size: 11px;
+  letter-spacing: 7px;
+}
+
+.qd-heading-line {
+  width: min(850px, 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.qd-heading-line span {
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #a67c00,
+    #f6e3a1
+  );
+
+  box-shadow: 0 0 9px rgba(212,175,55,.7);
+}
+
+.qd-heading-line span:last-child {
+  transform: rotate(180deg);
+}
+
+.qd-heading-line h1 {
+  margin: 0;
+
+  font-family: 'Riesling', Georgia, serif;
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 500;
+  letter-spacing: 5px;
+
+  background: linear-gradient(
+    110deg,
+    #d4af37,
+    #fff1b0,
+    #d4af37
+  );
+
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: tt-title-shine 5s linear infinite;
+}
+
+@keyframes tt-title-shine {
+  to {
+    background-position: -200% center;
+  }
+}
+
+.qd-timetable-heading p {
+  margin: 0;
+  color: #aaa08b;
+  font-size: 13px;
+  letter-spacing: .4px;
+}
+
+/* =========================================
+   DEPARTMENT CONTROLS
+========================================= */
+
+.qd-timetable-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.qd-department-tabs {
+  display: flex;
+  gap: 12px;
+}
+
+
+/* =========================================
+   QUADLY — GOLDEN MIRROR DEPARTMENT BUTTONS
+========================================= */
+
+.qd-dept-tab {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-width: 130px;
+  padding: 12px 28px;
+
+  border: 1px solid rgba(246, 227, 161, 0.8);
+  border-radius: 999px;
+
+  background: linear-gradient(
+    145deg,
+    #17140d,
+    #090909
+  );
+
+  color: #f6e3a1;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  /* Always visible golden glow */
+  box-shadow:
+    0 0 5px rgba(255,255,255,.3),
+    0 0 10px rgba(212,175,55,.4),
+    0 0 20px rgba(212,175,55,.2),
+    inset 0 0 8px rgba(246,227,161,.08);
+
+  transition:
+    transform .35s ease,
+    box-shadow .4s ease,
+    border-color .4s ease,
+    color .4s ease;
+}
+
+/* MIRROR REFLECTION */
+
+.qd-dept-tab::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    110deg,
+    transparent 15%,
+    rgba(255,255,255,.08) 35%,
+    rgba(255,255,255,.65) 50%,
+    rgba(255,255,255,.12) 60%,
+    transparent 80%
+  );
+
+  transform: translateX(-150%);
+  transition: transform .8s ease;
+}
+
+/* HOVER — BRIGHT MIRROR GLOW */
+
+.qd-dept-tab:hover,
+.qd-dept-tab:focus-visible {
+  transform: translateY(-3px) scale(1.06);
+
+  border-color: #fff1b0;
+  color: #fff6d5;
+
+  box-shadow:
+    0 0 6px #fff1b0,
+    0 0 14px rgba(255,230,150,.9),
+    0 0 28px rgba(212,175,55,.75),
+    0 0 45px rgba(212,175,55,.35),
+    inset 0 0 12px rgba(255,255,255,.2);
+
+  text-shadow:
+    0 0 7px #fff1b0,
+    0 0 15px rgba(212,175,55,.8);
+}
+
+.qd-dept-tab:hover::before,
+.qd-dept-tab:focus-visible::before {
+  transform: translateX(150%);
+}
+
+/* ACTIVE DEPARTMENT */
+
+.qd-dept-tab.active {
+  color: #171107;
+
+  background: linear-gradient(
+    120deg,
+    #a67c00,
+    #fff0ad,
+    #d4af37
+  );
+
+  border-color: #fff1b0;
+
+  box-shadow:
+    0 0 8px rgba(255,240,163,.8),
+    0 0 20px rgba(212,175,55,.65),
+    inset 0 0 10px rgba(255,255,255,.35);
+}
+
+/* ACTIVE BUTTON HOVER */
+
+.qd-dept-tab.active:hover {
+  color: #080704;
+
+  box-shadow:
+    0 0 10px #fff1b0,
+    0 0 25px rgba(255,220,100,.9),
+    0 0 45px rgba(212,175,55,.6);
+}
+
+.qd-dept-tab:focus-visible {
+  outline: 2px solid #f6e3a1;
+  outline-offset: 4px;
+}
+
+.qd-dept-tab:active {
+  transform: scale(.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qd-dept-tab,
+  .qd-dept-tab::before {
+    transition: none;
+  }
+}
+
+.qd-dept-tab:hover {
+  border-color: #f6e3a1;
+  box-shadow: 0 0 15px rgba(212,175,55,.3);
+}
+
+.qd-dept-tab.active {
+  color: #15100a;
+
+  font-weight: 700;
+
+  background: linear-gradient(
+    120deg,
+    #a67c00,
+    #fff0ad,
+    #d4af37
+  );
+
+  border-color: #fff0ad;
+
+  box-shadow:
+    0 0 8px #d4af37,
+    0 0 22px rgba(212,175,55,.55),
+    inset 0 1px 4px rgba(255,255,255,.65);
+}
+
+.qd-department-select {
+  min-width: 155px;
+  padding: 12px 18px;
+
+  border: 1px solid rgba(212,175,55,.55);
+  border-radius: 999px;
+
+  background: #100e09;
+  color: #f6e3a1;
+
+  font: inherit;
+  font-size: 13px;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.qd-department-select option {
+  background: #111;
+  color: #f6e3a1;
+}
+
+/* =========================================
+   SCHEDULE TABLE
+========================================= */
+
+.qd-schedule-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-height: 250px;
+  padding: 20px;
+
+  border: 1px solid rgba(212,175,55,.48);
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 50%,
+      rgba(212,175,55,.09),
+      transparent 55%
+    ),
+    linear-gradient(120deg,#17140e,#0b0b0a 80%);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 0 18px rgba(212,175,55,.1);
+}
+
+.qd-schedule-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255,255,255,.07) 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-100%);
+  transition: transform 1s ease;
+}
+
+.qd-schedule-section:hover::before {
+  transform: translateX(100%);
+}
+
+.qd-schedule-table-wrap {
+  position: relative;
+  z-index: 2;
+
+  flex: 1 1 auto;
+  min-width: 0;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(212,175,55,.3);
+  border-radius: 12px;
+}
+
+.qd-schedule-table {
+  width: 100%;
+  min-width: 480px;
+
+  border-collapse: collapse;
+  text-align: left;
+
+  background: rgba(15,13,9,.55);
+}
+
+.qd-schedule-table th,
+.qd-schedule-table td {
+  padding: 13px 18px;
+
+  border-bottom: 1px solid rgba(212,175,55,.12);
+
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.qd-schedule-table th {
+  color: #f6e3a1;
+  font-weight: 650;
+
+  background: rgba(212,175,55,.055);
+}
+
+.qd-schedule-table td {
+  color: #e6e0d2;
+}
+
+.qd-schedule-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.qd-schedule-table tbody tr {
+  transition: background .25s ease;
+}
+
+.qd-schedule-table tbody tr:hover {
+  background: rgba(212,175,55,.09);
+}
+
+.qd-schedule-table .qd-time-cell {
+  color: #e8c96d;
+  font-weight: 600;
+}
+
+.qd-schedule-table .qd-column-active {
+  background: rgba(212,175,55,.055);
+}
+
+/* =========================================
+   GRADUATION CAP ARTWORK
+========================================= */
+
+.qd-schedule-art {
+  flex: 0 0 185px;
+  width: 185px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  filter:
+    drop-shadow(0 0 9px rgba(212,175,55,.65))
+    drop-shadow(0 0 20px rgba(212,175,55,.25));
+
+  animation: tt-art-float 5s ease-in-out infinite;
+}
+
+.qd-schedule-art svg {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes tt-art-float {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.qd-timetable-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 16px;
+
+  border-top: 1px solid rgba(212,175,55,.2);
+
+  color: #81765a;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.qd-timetable-footer span:first-child {
+  color: #c7a13a;
+  font-family: 'Riesling', Georgia, serif;
+  font-size: 22px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 750px) {
+  .qd-timetable-page {
+    padding: 24px 16px 35px;
+  }
+
+  .qd-timetable-wrap {
+    gap: 28px;
+  }
+
+  .qd-timetable-logo {
+    font-size: 52px;
+  }
+
+  .qd-schedule-section {
+    flex-direction: column;
+  }
+
+  .qd-schedule-art {
+    width: 130px;
+    flex-basis: auto;
+  }
+
+  .qd-timetable-controls {
+    flex-wrap: wrap;
+  }
+
+  .qd-department-tabs {
+    width: 100%;
+  }
+
+  .qd-dept-tab {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+  }
+
+  .qd-department-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .qd-timetable-header {
+    align-items: center;
+  }
+
+  .qd-timetable-logo {
+    font-size: 44px;
+  }
+
+  .qd-heading-line {
+    gap: 10px;
+  }
+
+  .qd-heading-line h1 {
+    font-size: 38px;
+    letter-spacing: 2px;
+  }
+
+  .qd-timetable-subtitle {
+    letter-spacing: 3px;
+  }
+
+  .qd-schedule-section {
+    padding: 12px;
+  }
+
+  .qd-schedule-table th,
+  .qd-schedule-table td {
+    padding: 12px 10px;
+    font-size: 11px;
+  }
+
+  .qd-timetable-footer {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qd-heading-line h1,
+  .qd-schedule-art {
+    animation: none;
+  }
+}

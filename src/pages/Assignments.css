@@ -1,0 +1,671 @@
+
+/* =========================================
+   QUADLY — ASSIGNMENTS PAGE
+   Premium Black & Gold
+========================================= */
+
+.qd-assignments-page {
+  --gold: #d4af37;
+  --gold-light: #f6e3a1;
+  --gold-dark: #a67c00;
+  --text: #f4ecd6;
+
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 32px 24px 55px;
+  background: #0a0a0a;
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
+
+.qd-assignments-page::before,
+.qd-assignments-page::after {
+  content: "";
+  position: absolute;
+  left: -15%;
+  width: 130%;
+  height: 300px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter:
+    drop-shadow(0 0 5px rgba(212,175,55,.8))
+    drop-shadow(0 0 15px rgba(212,175,55,.35));
+}
+
+.qd-assignments-page::before {
+  top: -225px;
+  border-top: 2px solid var(--gold);
+  transform: rotate(-5deg);
+}
+
+.qd-assignments-page::after {
+  bottom: -225px;
+  border-bottom: 2px solid var(--gold);
+  transform: rotate(5deg);
+}
+
+.qd-assignments-wrap {
+  width: min(1100px, 100%);
+  margin: auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER */
+
+.qd-assignments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 75px;
+}
+
+.qd-assignments-logo {
+  display: inline-block;
+  font-family: 'Riesling', Georgia, serif;
+  font-size: 75px;
+  line-height: .9;
+  text-decoration: none !important;
+  border: none !important;
+  background: linear-gradient(
+    135deg,
+    #fff1b0,
+    #d4af37 55%,
+    #a67c00
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 9px rgba(212,175,55,.3));
+}
+
+.qd-assignments-logo:hover,
+.qd-assignments-logo:visited,
+.qd-assignments-logo:focus {
+  text-decoration: none !important;
+}
+.qd-assignments-page::before,
+.qd-assignments-page::after {
+  content: "";
+  position: absolute;
+
+  left: 9%;
+  width: 345%;
+  height: 2300px;
+
+  border-radius: 70%;
+  pointer-events: none;
+  z-index: -1;
+
+  filter: drop-shadow(0 0 8px rgba(212,175,55,.55));
+}
+.qd-assignments-back {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: 1px solid rgba(212,175,55,.45);
+  border-radius: 30px;
+  transition: .3s;
+}
+
+.qd-assignments-back:hover {
+  background: rgba(212,175,55,.12);
+  box-shadow: 0 0 15px rgba(212,175,55,.35);
+}
+
+/* PAGE TITLE */
+
+.qd-assignments-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+
+.qd-assignments-title h1 {
+  font-family: 'Riesling', Georgia, serif;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 400;
+  letter-spacing: 5px;
+  margin: 0;
+  white-space: nowrap;
+
+  background: linear-gradient(
+    110deg,
+    #a67c00,
+    #fff1b0,
+    #d4af37,
+    #fff1b0
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: qd-title-shine 5s linear infinite;
+}
+
+.qd-assignments-title span {
+  height: 1px;
+  flex: 1;
+  max-width: 180px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    #fff1b0
+  );
+  box-shadow: 0 0 9px rgba(212,175,55,.6);
+}
+
+.qd-assignments-title span:last-child {
+  transform: rotate(180deg);
+}
+
+@keyframes qd-title-shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.qd-assignments-subtitle {
+  text-align: center;
+  color: #a9a08a;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 55px;
+}
+
+/* DEPARTMENT CARDS */
+
+.qd-department-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.qd-department-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 30px;
+  border: 1px solid rgba(212,175,55,.35);
+  border-radius: 18px;
+  background: linear-gradient(
+    120deg,
+    rgba(28,24,15,.95),
+    rgba(10,10,10,.98)
+  );
+
+  box-shadow:
+    0 0 12px rgba(212,175,55,.08),
+    inset 0 0 15px rgba(212,175,55,.025);
+
+  transition: .4s ease;
+}
+
+.qd-department-card:hover {
+  border-color: rgba(246,227,161,.8);
+  box-shadow:
+    0 0 10px rgba(212,175,55,.25),
+    0 0 28px rgba(212,175,55,.12),
+    inset 0 0 18px rgba(212,175,55,.06);
+  transform: translateY(-3px);
+}
+
+.qd-department-left h2 {
+  margin: 0 0 22px;
+  font-size: 25px;
+  letter-spacing: 3px;
+  color: var(--gold-light);
+}
+
+.qd-year-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* YEAR BUTTONS */
+
+.qd-year-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 110px;
+  padding: 12px 18px;
+  border: 1px solid rgba(246,227,161,.65);
+  border-radius: 30px;
+  background: linear-gradient(145deg,#1c180e,#090909);
+  color: var(--gold-light);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  cursor: pointer;
+
+  box-shadow:
+    0 0 6px rgba(212,175,55,.3),
+    0 0 15px rgba(212,175,55,.12),
+    inset 0 0 8px rgba(246,227,161,.06);
+
+  transition:
+    transform .35s ease,
+    box-shadow .4s ease,
+    border-color .4s ease;
+}
+
+.qd-year-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    110deg,
+    transparent 15%,
+    rgba(255,255,255,.1) 35%,
+    rgba(255,255,255,.7) 50%,
+    rgba(255,255,255,.12) 60%,
+    transparent 80%
+  );
+  transform: translateX(-150%);
+  transition: transform .8s ease;
+}
+
+.qd-year-button:hover::before,
+.qd-year-button:focus-visible::before {
+  transform: translateX(150%);
+}
+
+.qd-year-button:hover,
+.qd-year-button:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+  border-color: #fff1b0;
+  box-shadow:
+    0 0 7px #fff1b0,
+    0 0 18px rgba(255,230,150,.8),
+    0 0 32px rgba(212,175,55,.5);
+  color: #fff6d5;
+}
+
+.qd-year-button:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.qd-year-button:active {
+  transform: scale(.97);
+}
+
+/* RIGHT SIDE ACTIONS */
+
+.qd-department-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.qd-deadline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-light);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.qd-deadline-icon {
+  font-size: 27px;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(212,175,55,.7);
+}
+
+.qd-submission-button {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #f6e3a1;
+  border-radius: 30px;
+  padding: 13px 22px;
+  background: linear-gradient(
+    120deg,
+    #8d690e,
+    #f6e3a1,
+    #c39b2e
+  );
+  color: #100d07;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 0 10px rgba(212,175,55,.4),
+    0 0 22px rgba(212,175,55,.2);
+  transition: .35s ease;
+}
+
+.qd-submission-button:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 12px #fff1b0,
+    0 0 28px rgba(212,175,55,.7);
+}
+
+/* FOOTER */
+
+.qd-assignments-footer {
+  margin-top: 65px;
+  text-align: center;
+  color: #89713a;
+  font-size: 10px;
+  letter-spacing: 4px;
+}
+
+/* =========================================
+   ASSIGNMENT POPUP
+========================================= */
+
+.qd-assignment-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(9px);
+  animation: qd-overlay-in .25s ease;
+}
+
+@keyframes qd-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.qd-assignment-modal {
+  position: relative;
+  width: min(680px, 100%);
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 38px;
+  border: 1px solid rgba(212,175,55,.65);
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    #17140d,
+    #090909 70%
+  );
+  box-shadow:
+    0 0 15px rgba(212,175,55,.25),
+    0 0 50px rgba(212,175,55,.12),
+    inset 0 0 25px rgba(212,175,55,.04);
+  animation: qd-modal-in .35s ease;
+}
+
+@keyframes qd-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.qd-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(212,175,55,.45);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--gold-light);
+  font-size: 25px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.qd-modal-close:hover {
+  background: rgba(212,175,55,.15);
+  transform: rotate(90deg);
+}
+
+.qd-modal-label {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+.qd-assignment-modal h2 {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: 'Riesling', Georgia, serif;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.qd-modal-divider {
+  height: 1px;
+  margin: 22px 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold),
+    #fff1b0,
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(212,175,55,.5);
+}
+
+/* ASSIGNMENT ITEMS */
+
+.qd-assignment-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.qd-assignment-item {
+  padding: 22px;
+  border: 1px solid rgba(212,175,55,.3);
+  border-radius: 13px;
+  background: rgba(255,255,255,.025);
+  transition: .3s;
+}
+
+.qd-assignment-item:hover {
+  border-color: rgba(246,227,161,.7);
+  box-shadow: 0 0 15px rgba(212,175,55,.12);
+}
+
+.qd-assignment-item h3 {
+  margin: 0 0 16px;
+  color: #f6e3a1;
+  font-size: 19px;
+}
+
+.qd-task-heading {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.qd-task-description {
+  margin: 0;
+  color: #c4b995;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.qd-assignment-deadline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 18px;
+  padding-top: 13px;
+  border-top: 1px solid rgba(212,175,55,.2);
+  color: var(--gold-light);
+  font-size: 12px;
+}
+
+.qd-assignment-deadline span {
+  font-size: 19px;
+  color: var(--gold);
+}
+
+/* SUBMISSION MODAL */
+
+.qd-upload-description {
+  color: #bdb296;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.qd-file-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  min-height: 160px;
+  margin-top: 22px;
+  padding: 20px;
+  border: 1px dashed rgba(212,175,55,.7);
+  border-radius: 15px;
+  background: rgba(212,175,55,.04);
+  color: var(--gold-light);
+  font-size: 13px;
+  text-align: center;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.qd-file-picker:hover {
+  background: rgba(212,175,55,.1);
+  box-shadow: 0 0 20px rgba(212,175,55,.15);
+}
+
+.qd-file-picker input {
+  display: none;
+}
+
+.qd-upload-icon {
+  font-size: 35px;
+  color: var(--gold);
+}
+
+.qd-submit-file-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: 1px solid #f6e3a1;
+  border-radius: 30px;
+  background: linear-gradient(120deg,#a67c00,#f6e3a1,#d4af37);
+  color: #100d07;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.qd-submit-file-button:hover:not(:disabled) {
+  box-shadow: 0 0 20px rgba(212,175,55,.5);
+  transform: translateY(-2px);
+}
+
+.qd-submit-file-button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.qd-upload-note {
+  color: #8f856d;
+  font-size: 11px;
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 750px) {
+  .qd-assignments-page {
+    padding: 25px 15px 45px;
+  }
+
+  .qd-assignments-header {
+    margin-bottom: 55px;
+  }
+
+  .qd-assignments-logo {
+    font-size: 58px;
+  }
+
+  .qd-department-card {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 23px 18px;
+  }
+
+  .qd-department-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .qd-year-buttons {
+    gap: 8px;
+  }
+
+  .qd-year-button {
+    min-width: 95px;
+    padding: 11px 12px;
+  }
+
+  .qd-assignment-modal {
+    padding: 30px 20px;
+  }
+
+  .qd-assignment-modal h2 {
+    font-size: 31px;
+  }
+}
+
+@media (max-width: 420px) {
+  .qd-assignments-title {
+    gap: 10px;
+  }
+
+  .qd-assignments-title h1 {
+    font-size: 35px;
+    letter-spacing: 2px;
+  }
+
+  .qd-department-actions {
+    gap: 10px;
+  }
+
+  .qd-submission-button {
+    padding: 11px 14px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qd-assignments-page *,
+  .qd-assignments-page *::before,
+  .qd-assignments-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
