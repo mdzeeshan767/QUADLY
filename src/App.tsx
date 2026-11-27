@@ -3,6 +3,12 @@ import Timetable from './pages/Timetable'
 import Assignments from './pages/Assignments'
 import Notices from './pages/Notices'
 import ScrollToTop from './components/ScrollToTop'
+import Passport from './pages/Passport'
+import Cadence from './pages/Cadence'
+import Attendance from './pages/Attendance'
+import FeeStructure from './pages/FeeStructure'
+import Vault from './pages/Vault'
+import Huddle from './pages/Huddle'
 
 import {
   
@@ -17,6 +23,8 @@ import './App.css'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
+
+
 
 function Home() {
   return (
@@ -71,16 +79,28 @@ function App() {
     <>
       <ScrollToTop />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/timetable" element={<Timetable />} />
-        <Route path="/assignments" element={<Assignments />} />
-        <Route path="/notices" element={<Notices />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/attendance" element={<Attendance />} />
+<Route path="/fees" element={<FeeStructure />} />
+<Route path="/vault" element={<Vault />} />
+<Route path="/huddle" element={<Huddle />} />
+
+  <Route path="/register" element={<Register />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/dashboard" element={<Dashboard />} />
+
+  <Route path="/passport" element={<Passport />} />
+  <Route path="/cadence" element={<Cadence />} />
+
+  <Route path="/timetable" element={<Timetable />} />
+  <Route path="/assignments" element={<Assignments />} />
+  <Route path="/notices" element={<Notices />} />
+
+  <Route path="*" element={<Navigate to="/" replace />} />
+</Routes>
+
     </>
   )
 }

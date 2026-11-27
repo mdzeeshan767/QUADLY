@@ -1,0 +1,505 @@
+.huddle-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 45px 6%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* HEADER */
+
+.huddle-heading {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 55px;
+  position: relative;
+  z-index: 2;
+}
+
+.huddle-brand {
+  font-family: 'Riesling', cursive;
+  font-size: clamp(62px, 7vw, 82px);
+  color: #e2c46b;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  margin: 0;
+  text-shadow:
+    0 0 8px rgba(255, 239, 180, 0.65),
+    0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.huddle-heading-line {
+  flex: 1;
+  height: 1px;
+  min-width: 30px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.85),
+    #fff0b5,
+    rgba(212, 175, 55, 0.85),
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.huddle-title {
+  font-family: 'Riesling', cursive;
+  font-size: clamp(42px, 5vw, 58px);
+  color: #fff4d0;
+  margin: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.35);
+}
+
+/* GOLDEN CURVES */
+
+.huddle-page::before,
+.huddle-page::after {
+  content: "";
+  position: absolute;
+  width: 125%;
+  height: 260px;
+  left: -12%;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.25));
+}
+
+.huddle-page::before {
+  top: 110px;
+  transform: rotate(-7deg);
+}
+
+.huddle-page::after {
+  top: 155px;
+  transform: rotate(-7deg);
+  border-color: rgba(212, 175, 55, 0.12);
+}
+
+/* INTRO */
+
+.huddle-intro {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 38px;
+}
+
+.huddle-eyebrow {
+  color: #c7a84c;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.huddle-intro h2 {
+  color: #fff5d8;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 500;
+  margin: 12px 0;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+.huddle-intro p {
+  color: #aaa18e;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ROOM LAYOUT */
+
+.huddle-rooms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* GLASS CARDS */
+
+.huddle-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  border: 1px solid rgba(230, 198, 112, 0.3);
+  border-radius: 19px;
+  background: linear-gradient(
+    135deg,
+    rgba(65, 55, 37, 0.4),
+    rgba(24, 23, 20, 0.95) 48%,
+    rgba(48, 40, 27, 0.65)
+  );
+  box-shadow:
+    inset 0 1px 1px rgba(255, 248, 220, 0.13),
+    inset 0 -1px 2px rgba(212, 175, 55, 0.1),
+    0 15px 45px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(212, 175, 55, 0.06);
+  backdrop-filter: blur(15px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.huddle-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -65%;
+  width: 65%;
+  height: 300%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 245, 210, 0.12),
+    rgba(255, 255, 255, 0.035),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  z-index: 0;
+  animation: huddleMirrorShine 10s ease-in-out infinite;
+}
+
+@keyframes huddleMirrorShine {
+  0%, 55% {
+    left: -75%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+.huddle-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.huddle-card:hover {
+  border-color: rgba(230, 198, 112, 0.55);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 248, 220, 0.17),
+    0 18px 50px rgba(0, 0, 0, 0.4),
+    0 0 22px rgba(212, 175, 55, 0.1);
+}
+
+/* ROOM HEADER */
+
+.huddle-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.huddle-room-icon {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #e2c46b;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 14px;
+  background: rgba(212, 175, 55, 0.08);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.1),
+    0 0 16px rgba(212, 175, 55, 0.1);
+}
+
+.huddle-room-icon svg {
+  filter: drop-shadow(0 0 5px rgba(255, 225, 145, 0.5));
+}
+
+.huddle-room-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.huddle-room-info h3 {
+  color: #fff2cc;
+  font-size: 19px;
+  font-weight: 500;
+  margin: 0 0 7px;
+  text-shadow: 0 0 9px rgba(255, 239, 190, 0.3);
+}
+
+.huddle-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #bdb39c;
+  font-size: 11px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.status-open {
+  background: #8bd49b;
+  box-shadow: 0 0 8px rgba(139, 212, 155, 0.8);
+}
+
+.status-ready {
+  background: #e2c46b;
+  box-shadow: 0 0 8px rgba(226, 196, 107, 0.8);
+}
+
+.huddle-room-tag {
+  color: #b99a50;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+
+/* EMPTY AREAS */
+
+.huddle-chat-area,
+.huddle-meeting-area {
+  flex: 1;
+  min-height: 235px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 13px;
+  background: rgba(0, 0, 0, 0.19);
+}
+
+.huddle-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px 15px;
+  color: #a98d4b;
+}
+
+.huddle-empty svg {
+  margin-bottom: 15px;
+  opacity: 0.8;
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.25));
+}
+
+.huddle-empty p {
+  color: #e8d9b3;
+  font-size: 14px;
+  margin: 0 0 7px;
+  text-shadow: 0 0 7px rgba(255, 245, 210, 0.2);
+}
+
+.huddle-empty span {
+  color: #817a6a;
+  font-size: 11px;
+}
+
+/* MESSAGES */
+
+.huddle-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  margin-top: auto;
+}
+
+.huddle-message {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.huddle-message-content {
+  max-width: 85%;
+  padding: 11px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 13px 13px 3px 13px;
+  background: linear-gradient(
+    135deg,
+    rgba(126, 99, 39, 0.35),
+    rgba(67, 53, 29, 0.4)
+  );
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.07);
+}
+
+.huddle-message-content p {
+  color: #fff2d0;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  margin: 0 0 5px;
+}
+
+.huddle-message-content span {
+  display: block;
+  color: #a99b7a;
+  font-size: 9px;
+  text-align: right;
+}
+
+/* MESSAGE INPUT */
+
+.huddle-message-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 7px 7px 15px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.huddle-message-form input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff3d3;
+  font-size: 12px;
+}
+
+.huddle-message-form input::placeholder {
+  color: #817968;
+}
+
+.huddle-send-button {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 237, 176, 0.55);
+  border-radius: 50%;
+  color: #211b0e;
+  background: linear-gradient(145deg, #f4dfa0, #c49c3e);
+  box-shadow:
+    0 0 12px rgba(212, 175, 55, 0.28),
+    inset 0 1px rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.huddle-send-button:hover:not(:disabled) {
+  transform: scale(1.07);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.55);
+}
+
+.huddle-send-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* BUTTONS */
+
+.huddle-start-button {
+  width: 100%;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 237, 176, 0.5);
+  border-radius: 9px;
+  color: #211b0e;
+  background: linear-gradient(120deg, #f0d991, #c49c3e);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow:
+    0 0 15px rgba(212, 175, 55, 0.16),
+    inset 0 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.25s ease;
+}
+
+.huddle-start-button:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 22px rgba(212, 175, 55, 0.4),
+    inset 0 1px rgba(255, 255, 255, 0.65);
+}
+
+.huddle-copy-button {
+  width: 100%;
+  min-height: 43px;
+  margin-top: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 9px;
+  color: #d7c69e;
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.huddle-copy-button:hover {
+  color: #fff2cc;
+  border-color: rgba(230, 198, 112, 0.6);
+  background: rgba(212, 175, 55, 0.08);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.1);
+}
+
+.huddle-copy-button svg {
+  color: #c9a94f;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .huddle-rooms {
+    grid-template-columns: 1fr;
+  }
+
+  .huddle-card {
+    min-height: 490px;
+  }
+}
+
+@media (max-width: 600px) {
+  .huddle-page {
+    padding: 30px 5%;
+  }
+
+  .huddle-heading {
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .huddle-brand {
+    font-size: 52px;
+  }
+
+  .huddle-title {
+    font-size: 38px;
+  }
+
+  .huddle-card {
+    padding: 18px;
+    min-height: 470px;
+  }
+
+  .huddle-room-tag {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}

@@ -1,0 +1,473 @@
+
+.passport-page {
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 7%;
+  background: #090909;
+  color: #eee4bd;
+  box-sizing: border-box;
+}
+
+/* Heading */
+
+.passport-heading {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(196, 164, 66, 0.25);
+  margin-bottom: 40px;
+}
+
+.passport-brand {
+  font-family: 'Riesling', Georgia, serif;
+  font-size: clamp(38px, 5vw, 96px);
+  font-weight: 400;
+  color: #dfb425;
+  margin: 0;
+  white-space: nowrap;
+}
+.passport-brand,
+.cadence-brand {
+  font-family: 'Riesling', Georgia, serif;
+  font-size: clamp(50px, 6vw, 72px);
+  font-weight: 400;
+  color: #d8b84f;
+  margin: 0;
+  white-space: nowrap;
+  text-shadow: 0 0 14px rgba(212, 177, 65, 0.16);
+}
+
+
+.passport-action {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background: linear-gradient(
+    145deg,
+    rgba(218, 185, 91, 0.10),
+    rgba(255, 255, 255, 0.015) 35%,
+    rgba(8, 8, 8, 0.95) 75%
+  );
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 235, 174, 0.18),
+    inset 0 -5px 12px rgba(0, 0, 0, 0.4),
+    0 0 12px rgba(201, 164, 55, 0.04);
+}
+
+.passport-action::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 239, 188, 0.13) 42%,
+    transparent 60%
+  );
+
+  transform: translateX(-110%);
+  transition: transform 0.8s ease;
+}
+
+.passport-action:hover::before {
+  transform: translateX(110%);
+}
+
+.passport-action:hover {
+  border-color: #e0c15b;
+  box-shadow:
+    0 0 20px rgba(218, 181, 65, 0.18),
+    inset 0 1px 4px rgba(255, 236, 177, 0.2);
+}
+
+/* Natural golden glow on buttons */
+
+.passport-action {
+  border: 1px solid rgba(212, 177, 65, 0.65);
+
+  box-shadow:
+    0 0 8px rgba(212, 177, 65, 0.10),
+    0 0 18px rgba(212, 177, 65, 0.055),
+    inset 0 0 12px rgba(212, 177, 65, 0.035);
+
+  transition: all 0.4s ease;
+}
+
+/* Gentle breathing glow */
+
+@keyframes naturalGoldGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 7px rgba(212, 177, 65, 0.10),
+      0 0 16px rgba(212, 177, 65, 0.05),
+      inset 0 0 10px rgba(212, 177, 65, 0.025);
+  }
+
+  50% {
+    box-shadow:
+      0 0 12px rgba(212, 177, 65, 0.19),
+      0 0 26px rgba(212, 177, 65, 0.10),
+      inset 0 0 14px rgba(212, 177, 65, 0.06);
+  }
+}
+
+.passport-action {
+  animation: naturalGoldGlow 4s ease-in-out infinite;
+}
+
+/* Hover glow */
+
+.passport-action:hover {
+  border-color: #e5c45e;
+  color: #fff0bd;
+
+  box-shadow:
+    0 0 12px rgba(226, 190, 78, 0.25),
+    0 0 30px rgba(226, 190, 78, 0.14),
+    inset 0 0 15px rgba(226, 190, 78, 0.09);
+
+  transform: translateY(-3px);
+}
+
+.passport-title {
+  font-family: 'Riesling', Georgia, serif;
+  font-size: clamp(34px, 4vw, 50px);
+  font-weight: 400;
+  color: #f2e4ae;
+  margin: 0;
+  white-space: nowrap;
+  order: 3;
+}
+
+.passport-heading-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(212, 177, 65, 0.7),
+    transparent
+  );
+}
+/*golden cuve lines*/
+.passport-page {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.passport-page::before,
+.passport-page::after {
+  content: "";
+  position: absolute;
+  left: -15%;
+  width: 130%;
+  height: 300px;
+  border: 1px solid rgba(212, 177, 65, 0.20);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.passport-page::before {
+  top: 35%;
+  transform: rotate(-9deg);
+  box-shadow: 0 0 12px rgba(212, 177, 65, 0.04);
+}
+
+.passport-page::after {
+  top: 42%;
+  transform: rotate(8deg);
+  border-color: rgba(212, 177, 65, 0.12);
+}
+
+/* Passport card */
+
+.passport-card {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 40px;
+  min-height: 460px;
+  border: 1px solid #c5a43e;
+  border-radius: 36px;
+  background: linear-gradient(
+    120deg,
+    rgba(190, 153, 43, 0.075),
+    rgba(10, 10, 10, 0.2)
+  );
+  box-shadow: 0 0 22px rgba(195, 159, 49, 0.07);
+  box-sizing: border-box;
+}
+
+.passport-photo {
+  width: 200px;
+  height: 250px;
+  border: 1px solid #c9a93f;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9a93f;
+  font-size: 22px;
+  letter-spacing: 2px;
+  background: rgba(190, 153, 43, 0.06);
+  overflow: hidden;
+}
+
+.passport-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Student details */
+
+.passport-details {
+  width: 100%;
+}
+
+.passport-field {
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 1px dashed rgba(198, 169, 74, 0.23);
+}
+
+.passport-field span {
+  color: #b89b46;
+  font-size: 15px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.passport-field strong {
+  color: #eee1b4;
+  font-size: 23px;
+  font-weight: 500;
+  text-align: right;
+}
+
+.passport-field.last-field {
+  border-bottom: none;
+}
+
+/* Action buttons */
+
+.passport-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.passport-action {
+  min-height: 80px;
+  border: 1px solid #c7a640;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d5b448;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.passport-action:hover {
+  background: rgba(198, 164, 58, 0.12);
+  box-shadow: 0 0 18px rgba(198, 164, 58, 0.15);
+  color: #f3df9b;
+  transform: translateY(-3px);
+}
+
+/* =====================================
+   QUADLY PASSPORT — LUXURY MIRROR FINISH
+===================================== */
+
+/* Glass mirror reflection on student card */
+
+.passport-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  background:
+    linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.075) 0%,
+      rgba(212, 175, 55, 0.09) 18%,
+      rgba(255, 255, 255, 0.025) 38%,
+      rgba(10, 10, 10, 0.72) 65%,
+      rgba(212, 175, 55, 0.055) 100%
+    );
+
+  border: 1px solid rgba(230, 198, 105, 0.7);
+
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.2),
+    inset 0 -15px 30px rgba(212, 175, 55, 0.045),
+    0 10px 35px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(212, 175, 55, 0.09);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Diagonal mirror reflection */
+
+.passport-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background: linear-gradient(
+    125deg,
+    transparent 8%,
+    rgba(255, 255, 255, 0.12) 24%,
+    rgba(246, 227, 161, 0.14) 29%,
+    rgba(255, 255, 255, 0.035) 36%,
+    transparent 55%
+  );
+}
+
+/* Polished upper glass edge */
+
+.passport-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 7%;
+  width: 86%;
+  height: 1px;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 248, 218, 0.85),
+    transparent
+  );
+
+  box-shadow: 0 0 12px rgba(246, 227, 161, 0.35);
+}
+
+/* Student labels — golden illumination */
+
+.passport-field span {
+  color: #e1c66f;
+
+  text-shadow:
+    0 0 5px rgba(212, 175, 55, 0.4),
+    0 0 12px rgba(212, 175, 55, 0.22);
+
+  transition: text-shadow 0.3s ease;
+}
+
+/* Student information — bright white/champagne shine */
+
+.passport-field strong {
+  color: #fff9e9;
+
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.65),
+    0 0 10px rgba(246, 227, 161, 0.48),
+    0 0 20px rgba(212, 175, 55, 0.22);
+
+  transition: text-shadow 0.35s ease;
+}
+
+/* Extra shine when hovering over a detail */
+
+.passport-field:hover strong {
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.85),
+    0 0 15px rgba(246, 227, 161, 0.65),
+    0 0 28px rgba(212, 175, 55, 0.35);
+}
+
+.passport-field:hover span {
+  text-shadow:
+    0 0 8px rgba(246, 227, 161, 0.65),
+    0 0 18px rgba(212, 175, 55, 0.35);
+}
+
+/* Photo frame — subtle reflective border */
+
+.passport-photo {
+  box-shadow:
+    inset 0 1px 5px rgba(255, 255, 255, 0.13),
+    0 0 15px rgba(212, 175, 55, 0.12);
+}
+
+/* Smooth card reflection */
+
+.passport-card {
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.passport-card:hover {
+  border-color: rgba(246, 227, 161, 0.85);
+
+  box-shadow:
+    inset 0 1px 5px rgba(255, 255, 255, 0.23),
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    0 0 32px rgba(212, 175, 55, 0.16);
+}
+
+
+/* Responsive */
+
+@media (max-width: 750px) {
+  .passport-page {
+    padding: 25px 5%;
+  }
+
+  .passport-card {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 25px 18px;
+    gap: 25px;
+  }
+
+  .passport-photo {
+    width: 145px;
+    height: 180px;
+  }
+
+  .passport-field {
+    min-height: 65px;
+  }
+
+  .passport-field span {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .passport-field strong {
+    font-size: 15px;
+  }
+
+  .passport-actions {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .passport-action {
+    min-height: 65px;
+  }
+}

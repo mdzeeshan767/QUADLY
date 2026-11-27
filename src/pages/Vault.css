@@ -1,0 +1,506 @@
+.vault-page {
+  position: relative;
+  min-height: 100vh;
+  padding: 45px 6%;
+  background: transparent;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* HEADER */
+
+.vault-heading {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 55px;
+  position: relative;
+  z-index: 2;
+}
+
+.vault-brand {
+  font-family: 'Riesling', cursive;
+  font-size: clamp(62px, 7vw, 82px);
+  color: #e2c46b;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  margin: 0;
+  text-shadow:
+    0 0 8px rgba(255, 239, 180, 0.65),
+    0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.vault-heading-line {
+  flex: 1;
+  height: 1px;
+  min-width: 30px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(212, 175, 55, 0.85),
+    #fff0b5,
+    rgba(212, 175, 55, 0.85),
+    transparent
+  );
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.vault-title {
+  font-family: 'Riesling', cursive;
+  font-size: clamp(42px, 5vw, 58px);
+  color: #fff4d0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* GOLDEN CURVES */
+
+.vault-page::before,
+.vault-page::after {
+  content: "";
+  position: absolute;
+  width: 125%;
+  height: 260px;
+  left: -12%;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.25));
+}
+
+.vault-page::before {
+  top: 110px;
+  transform: rotate(-7deg);
+}
+
+.vault-page::after {
+  top: 155px;
+  transform: rotate(-7deg);
+  border-color: rgba(212, 175, 55, 0.12);
+}
+
+/* INTRO */
+
+.vault-intro {
+  margin-bottom: 42px;
+  max-width: 650px;
+  position: relative;
+  z-index: 1;
+}
+
+.vault-eyebrow {
+  color: #c7a84c;
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.vault-intro h2 {
+  color: #fff5d8;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 500;
+  margin: 0 0 12px;
+  text-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+.vault-intro > p:last-child {
+  color: #a9a18e;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* COURSE CARDS */
+
+.vault-courses {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.vault-course-card {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 30px;
+  border: 1px solid rgba(212, 175, 55, 0.24);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    rgba(39, 34, 25, 0.88),
+    rgba(17, 17, 17, 0.94)
+  );
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.3),
+    inset 0 1px rgba(255, 245, 210, 0.07);
+  backdrop-filter: blur(15px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.vault-course-card::before {
+  content: "";
+  position: absolute;
+  inset: -100% -50%;
+  background: linear-gradient(
+    110deg,
+    transparent 43%,
+    rgba(255, 255, 255, 0.035) 49%,
+    rgba(255, 239, 190, 0.08) 50%,
+    transparent 57%
+  );
+  transform: translateX(-35%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.vault-course-card:hover {
+  border-color: rgba(224, 190, 91, 0.5);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(212, 175, 55, 0.07),
+    inset 0 1px rgba(255, 245, 210, 0.1);
+}
+
+/* COURSE HEADER */
+
+.vault-course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  margin-bottom: 25px;
+}
+
+.vault-course-label {
+  color: #c6a64e;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+.vault-course-header h2 {
+  color: #f6e8bd;
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin: 7px 0 4px;
+}
+
+.vault-course-header p {
+  color: #99917e;
+  font-size: 12px;
+  margin: 0;
+}
+
+.vault-course-symbol {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  color: #d8b85b;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 15px;
+  background: rgba(212, 175, 55, 0.07);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.08);
+}
+
+/* THREE COLUMNS */
+
+.vault-sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.vault-section {
+  padding: 8px 25px;
+  min-width: 0;
+}
+
+.vault-section:first-child {
+  padding-left: 0;
+}
+
+.vault-section:last-child {
+  padding-right: 0;
+}
+
+.vault-section + .vault-section {
+  border-left: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.vault-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d9b957;
+}
+
+.vault-section-heading h3 {
+  color: #f2e5c3;
+  font-size: 17px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.vault-section-description {
+  color: #928b7b;
+  font-size: 11px;
+  line-height: 1.6;
+  min-height: 35px;
+  margin: 12px 0 18px;
+}
+
+/* YEAR LINKS */
+
+.vault-year-links {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.vault-year-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 13px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #c9c0aa;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+/* ===== VAULT MIRROR SHINE ===== */
+
+.vault-course-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(65, 55, 37, 0.48),
+    rgba(24, 23, 20, 0.94) 45%,
+    rgba(48, 40, 27, 0.72)
+  );
+  border: 1px solid rgba(230, 198, 112, 0.38);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 248, 220, 0.16),
+    inset 0 -1px 2px rgba(212, 175, 55, 0.12),
+    0 15px 45px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(212, 175, 55, 0.08);
+}
+
+/* Moving mirror reflection */
+.vault-course-card::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -65%;
+  width: 65%;
+  height: 300%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 245, 210, 0.13),
+    rgba(255, 255, 255, 0.035),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  z-index: 0;
+  animation: vaultMirrorShine 9s ease-in-out infinite;
+}
+
+@keyframes vaultMirrorShine {
+  0%, 55% {
+    left: -75%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Keep card content above reflection */
+.vault-course-header,
+.vault-sections {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== TEXT GLOW ===== */
+
+.vault-brand,
+.vault-title {
+  text-shadow:
+    0 0 5px rgba(255, 246, 210, 0.65),
+    0 0 13px rgba(230, 194, 94, 0.55),
+    0 0 25px rgba(212, 175, 55, 0.3);
+}
+
+.vault-intro h2 {
+  color: #fff8e6;
+  text-shadow:
+    0 0 7px rgba(255, 245, 210, 0.35),
+    0 0 18px rgba(212, 175, 55, 0.22);
+}
+
+.vault-course-header h2 {
+  color: #fff3cd;
+  text-shadow:
+    0 0 6px rgba(255, 239, 190, 0.5),
+    0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.vault-course-header p {
+  color: #c4b99e;
+  text-shadow: 0 0 8px rgba(255, 245, 210, 0.15);
+}
+
+.vault-section-heading h3 {
+  color: #fff0c2;
+  text-shadow:
+    0 0 6px rgba(255, 239, 190, 0.45),
+    0 0 13px rgba(212, 175, 55, 0.3);
+}
+
+.vault-section-heading svg {
+  filter: drop-shadow(0 0 5px rgba(235, 197, 91, 0.65));
+}
+
+.vault-section-description {
+  color: #c2b89f;
+}
+
+/* ===== YEAR BUTTON SHINE ===== */
+
+.vault-year-link {
+  color: #fff4d7;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.055),
+    rgba(212, 175, 55, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+  border-color: rgba(230, 198, 112, 0.25);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.09),
+    0 0 8px rgba(212, 175, 55, 0.04);
+  text-shadow: 0 0 7px rgba(255, 245, 210, 0.25);
+}
+
+.vault-year-link svg {
+  filter: drop-shadow(0 0 4px rgba(235, 197, 91, 0.65));
+}
+
+.vault-year-link:hover {
+  color: #ffffff;
+  background: linear-gradient(
+    110deg,
+    rgba(212, 175, 55, 0.2),
+    rgba(255, 248, 220, 0.1)
+  );
+  border-color: rgba(188, 182, 166, 0.7);
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.2),
+    0 0 18px rgba(167, 161, 141, 0.2);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
+}
+/* Center Huddle intro text */
+.huddle-intro {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 750px;
+}
+
+.huddle-intro .huddle-eyebrow {
+  display: block;
+  text-align: center;
+}
+
+.huddle-intro h2,
+.huddle-intro p {
+  text-align: center;
+}
+/* Course icon shine */
+.vault-course-symbol {
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.16),
+    0 0 18px rgba(212, 175, 55, 0.18);
+}
+
+.vault-course-symbol svg {
+  filter: drop-shadow(0 0 7px rgba(255, 225, 145, 0.6));
+}
+
+.vault-year-link svg {
+  color: #b99a48;
+  transition: transform 0.25s ease;
+}
+
+.vault-year-link:hover {
+  color: #fff3cd;
+  border-color: rgba(224, 190, 91, 0.55);
+  background: rgba(212, 175, 55, 0.09);
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.08);
+}
+
+.vault-year-link:hover svg {
+  transform: translate(3px, -3px);
+  color: #f3d77f;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .vault-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .vault-section,
+  .vault-section:first-child,
+  .vault-section:last-child {
+    padding: 20px 0;
+  }
+
+  .vault-section + .vault-section {
+    border-left: none;
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+  }
+
+  .vault-section-description {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .vault-page {
+    padding: 30px 5%;
+  }
+
+  .vault-heading {
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .vault-brand {
+    font-size: 52px;
+  }
+
+  .vault-title {
+    font-size: 38px;
+  }
+
+  .vault-course-card {
+    padding: 20px;
+  }
+
+  .vault-course-header h2 {
+    font-size: 25px;
+  }
+}
